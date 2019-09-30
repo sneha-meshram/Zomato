@@ -1,0 +1,24 @@
+<p>display works!</p>
+<mat-paginator style="margin-bottom: 15px"
+    [length]="foods.length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    (page)="pageChange($event)">
+</mat-paginator>
+<section class="displayOuter">
+   
+    <ng-container class="card-item" *ngFor="let objects of foods; let idx = index;">
+        <mat-card class="card-display" *ngIf="(idx+1) >= from && (idx+1) <= to">
+            <mat-card-header>
+                <div mat-card-avatar class="display-header-image"></div>
+                <mat-card-title>{{objects.collection.title}}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image src={{objects.collection.image_url}} >
+            <mat-card-content>
+                <p>
+                    {{objects.collection.description}}
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+</section>
